@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 262 83% 75%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -35,20 +35,20 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --plate-background: 220 13% 91%;
+    --plate-text: 222.2 84% 4.9%;
+    --plate-border: 214.3 31.8% 91.4%;
+    
+    --rare-gradient-start: 262 83% 75%;
+    --rare-gradient-end: 42 95% 58%;
   }
 
   .dark {
@@ -61,7 +61,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 262 83% 75%; 
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -79,6 +79,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -87,6 +88,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --plate-background: 0 0% 13%;
+    --plate-text: 0 0% 90%;
+    --plate-border: 0 0% 30%;
+    
+    --rare-gradient-start: 262 83% 75%;
+    --rare-gradient-end: 42 95% 58%;
   }
 }
 
@@ -97,5 +105,46 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes plateRoll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.plate-roll {
+  animation: plateRoll 0.1s linear infinite;
+}
+
+.plate-roll-slow {
+  animation: plateRoll 0.3s linear infinite;
+}
+
+.plate-roll-stop {
+  animation: none;
+}
+
+.animate-shine {
+  background: linear-gradient(
+    90deg, 
+    hsl(var(--rare-gradient-start)) 0%, 
+    hsl(var(--rare-gradient-end)) 50%, 
+    hsl(var(--rare-gradient-start)) 100%
+  );
+  background-size: 200% auto;
+  animation: shine 2s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }
